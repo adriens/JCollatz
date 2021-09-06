@@ -39,6 +39,14 @@ choco install jbang
 ```
 ### 🕹️Generate your own samples
 
+Shortest way to get done :
+
+```
+jbang run --java 11 https://github.com/adriens/JCollatz/blob/main/Collatz.java  -l -666 -u 666
+```
+
+Full checkout way :
+
 ```shell
 git clone https://github.com/adriens/JCollatz.git
 cd JCollatz
