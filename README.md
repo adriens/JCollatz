@@ -40,8 +40,8 @@ choco install jbang
 ## Generate your own sample
 
 ```shell
-git clone 
-cd jcollatz
+git clone https://github.com/adriens/JCollatz.git
+cd JCollatz
 # Use -666 as lower seed and 666 as upper seed
 jbang Collatz.java -l -666 -u 666
 ```
