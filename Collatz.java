@@ -21,7 +21,7 @@ class collatz implements Callable<Integer> {
 
     public static final String OUTPUT_CSV_RELATIONS = "RELATIONS.csv";
     public static final String OUTPUT_CSV_NODES = "NODES.csv";
-    public static final String OUTPUT_GRAPHML = "Threr_plus_one.graphml";
+    public static final String OUTPUT_GRAPHML = "collatz_";
 
     public static final int computeNext(int i) {
         int out = i;
@@ -128,7 +128,8 @@ class collatz implements Callable<Integer> {
     }
 
     public static final void dumpGraphml(int min, int max) throws IOException {
-        FileWriter gml = new FileWriter(OUTPUT_GRAPHML, false);
+        String outputFilename = OUTPUT_GRAPHML + min + "_" + max + ".graphml";
+        FileWriter gml = new FileWriter(outputFilename, false);
 
         // put header
         gml.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
