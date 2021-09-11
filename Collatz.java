@@ -130,7 +130,8 @@ class collatz implements Callable<Integer> {
     public static final void dumpGraphml(int min, int max) throws IOException {
         String outputFilename = OUTPUT_GRAPHML + min + "_" + max + ".graphml";
         FileWriter gml = new FileWriter(outputFilename, false);
-
+        FileWriter dot = new FileWriter(outputFilename + ".gv", false);
+        dot.write("digraph D {\n");
         // put header
         gml.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
         gml.write("<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\"  \n"
@@ -161,9 +162,11 @@ class collatz implements Callable<Integer> {
 
                 //gml.write(lList.get(j) + "," + lList.get(j+1) + "\n");
                 gml.write("<edge source=\"" + lList.get(j) + "\" target=\"" + lList.get(j + 1) + "\"/>\n");
+                dot.write("\t" + lList.get(j) + " -> " + lList.get(j+1) + ";\n");
                 nbRelations++;
             }
             gml.flush();
+            dot.flush();
         }
         // write nodes
         for (Integer i : uniqueNodes) {
@@ -183,6 +186,9 @@ class collatz implements Callable<Integer> {
                 + "</graphml>");
         gml.flush();
         gml.close();
+        dot.write("}");
+        dot.flush();
+        dot.close();
         System.out.println("- Initial lower seed : " + min);
         System.out.println("- Initial upper seed : " + max);
         System.out.println("- Upper bound : " + upperBound);
