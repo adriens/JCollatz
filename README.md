@@ -83,4 +83,6 @@ dot -Tpng collatz_-666_666.graphml.dot  -o demo.png -Kfdp
 
 # To generate a 900 by 1500 pixel PNG image from the graph
 dot -Tpng -Gsize=9,15\! -Gdpi=100 collatz_-666_666.graphml.dot  -o demo.png -Kfdp
+convert demo.png -gravity center -background white -extent 900x1500 final.png
+
 ```
