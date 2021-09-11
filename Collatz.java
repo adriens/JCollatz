@@ -195,14 +195,14 @@ class collatz implements Callable<Integer> {
     //@Parameters(index = "0", description = "Lower bound", defaultValue = "-1000")
     @CommandLine.Option(
             names = {"-l", "--lower-bound"},
-            description = "The lower bound of numbers",
+            description = "The lower bound of seed numbers",
             required = true)
     private int lowerBound;
 
     //@Parameters(index = "1", description = "Upper bound", defaultValue = "1000")
     @CommandLine.Option(
             names = {"-u", "--upper-bound"},
-            description = "The upper bound of numbers",
+            description = "The upper bound of seed numbers",
             required = true)
     private int upperBound;
 
