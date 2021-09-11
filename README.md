@@ -66,11 +66,21 @@ Enjoy the following output files :
 ## Playing with `graphviz`
 
 See [official documentation](https://graphviz.org/doc/info/command.html) for more examples
-and play with [layouts](https://graphviz.org/docs/layouts/).
+and play with [layouts](https://graphviz.org/docs/layouts/) and different [output formats](https://graphviz.org/docs/outputs/)
 
 Still here is the dumbest graphviz command you can play with :
 
 
 ```
 dot -Tpdf collatz_-666_666.graphml.gv -o demo.pdf
+dot -Tpdf collatz_-666_666.graphml.dot -o demo.pdf -Ktwopi
+dot -Tpdf collatz_-25000_0.graphml.dot -o demo.pdf -Ktwopi
+dot -Tpdf collatz_-25000_0.graphml.dot -o demo.pdf -Kcirco
+dot -Tpdf collatz_-25000_0.graphml.dot -o demo.pdf -Kfdp
+dot -Tpdf collatz_-25000_0.graphml.dot -o demo.pdf -Kpatchwork
+dot -Tpdf collatz_-25000_0.graphml.dot -o demo.pdf -Ksfdp
+dot -Tpng collatz_-666_666.graphml.dot  -o demo.png -Kfdp
+
+# To generate a 900 by 1500 pixel PNG image from the graph
+dot -Tpng -Gsize=9,15\! -Gdpi=100 collatz_-666_666.graphml.dot  -o demo.png -Kfdp
 ```
