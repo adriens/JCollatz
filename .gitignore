@@ -3,3 +3,5 @@
 /RELATIONS.csv
 /*.graphml
 /*.pdf
+/*.dot
+/*.gv
