@@ -130,7 +130,7 @@ class collatz implements Callable<Integer> {
     public static final void dumpGraphml(int min, int max) throws IOException {
         String outputFilename = OUTPUT_GRAPHML + min + "_" + max + ".graphml";
         FileWriter gml = new FileWriter(outputFilename, false);
-        FileWriter dot = new FileWriter(outputFilename + ".gv", false);
+        FileWriter dot = new FileWriter(outputFilename + ".dot", false);
         dot.write("digraph D {\n");
         // put header
         gml.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
