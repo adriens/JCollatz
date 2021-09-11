@@ -141,10 +141,19 @@ class collatz implements Callable<Integer> {
         gml.flush();
 
         Set<Integer> uniqueNodes = new HashSet<Integer>();
-
+        int nbNodes = 0;
+        int nbRelations = 0;
+        int fiberMaxLength = 0;
+    
+        int lowerBound = 0;
+        int upperBound = 0;
+        
         // write edges
         for (int i = min; i < max; i++) {
             LinkedList<Integer> lList = collatz.buildSequenceFromSeed(i);
+            if( fiberMaxLength < lList.size()){
+                fiberMaxLength = lList.size();
+            }
             for (int j = 1; j < lList.size() - 1; j++) {
                 //System.out.println(lList.get(j) + "->" + lList.get(j + 1));
                 uniqueNodes.add(lList.get(j));
@@ -152,12 +161,20 @@ class collatz implements Callable<Integer> {
 
                 //gml.write(lList.get(j) + "," + lList.get(j+1) + "\n");
                 gml.write("<edge source=\"" + lList.get(j) + "\" target=\"" + lList.get(j + 1) + "\"/>\n");
+                nbRelations++;
             }
             gml.flush();
         }
         // write nodes
         for (Integer i : uniqueNodes) {
             gml.write("<node id=\"" + i + "\"/>\n");
+            nbNodes++;
+            if(i < lowerBound){
+                lowerBound = i;
+            }
+            if (i > upperBound){
+                upperBound = i;
+            }
         }
         gml.flush();
 
@@ -166,6 +183,13 @@ class collatz implements Callable<Integer> {
                 + "</graphml>");
         gml.flush();
         gml.close();
+        System.out.println("- Initial lower seed : " + min);
+        System.out.println("- Initial upper seed : " + max);
+        System.out.println("- Upper bound : " + upperBound);
+        System.out.println("- Lower bound : " + lowerBound);
+        System.out.println("- Nb. nodes : " + nbNodes);
+        System.out.println("- Nb. relations : " + nbRelations);
+        System.out.println("- Fiber max length: " + fiberMaxLength);
     }
 
     //@Parameters(index = "0", description = "Lower bound", defaultValue = "-1000")
@@ -193,19 +217,21 @@ class collatz implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception { // your business logic goes here...
-        System.out.println("Will generate file for following paramaters :");
+        System.out.println("=================== JCollatz ================");
+        System.out.println("About to generate file for following paramaters :\n");
 
-        System.out.println("Lower bound : " + lowerBound);
-        System.out.println("Upper bound : " + upperBound);
+        System.out.println("- Lower bound : " + lowerBound);
+        System.out.println("- Upper bound : " + upperBound);
         //System.out.println(lowerBound + upperBound);
-        System.out.println("Generating graphml...");
+        System.out.println("\n-> Generating graphml...\n");
         collatz.dumpGraphml(lowerBound, upperBound);
         
-        printlnAnsi("@|green graphml generated.|@");
+        printlnAnsi("@|green -> graphml generated.|@");
         //
-        System.out.println("Generating csvs...");
+        System.out.println("\n-> Generating csvs...");
         collatz.dumpCsvs(lowerBound, upperBound);
         printlnAnsi("@|green Csvs generated.|@");
+        printlnAnsi("@|green \nEnjoy playing with files.|@");
         return 0;
     }
 }
