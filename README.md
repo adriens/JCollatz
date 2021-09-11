@@ -63,7 +63,7 @@ Enjoy the following output files :
 - `Threr_plus_one.graphml`
 - The `dot` file
 
-## Playing with `graphviz`
+## 🎨Playing with `graphviz`
 
 See [official documentation](https://graphviz.org/doc/info/command.html) for more examples
 and play with [layouts](https://graphviz.org/docs/layouts/) and different [output formats](https://graphviz.org/docs/outputs/)
@@ -84,5 +84,4 @@ dot -Tpng collatz_-666_666.graphml.dot  -o demo.png -Kfdp
 # To generate a 900 by 1500 pixel PNG image from the graph
 dot -Tpng -Gsize=9,15\! -Gdpi=100 collatz_-666_666.graphml.dot  -o demo.png -Kfdp
 convert demo.png -gravity center -background white -extent 900x1500 final.png
-
 ```
