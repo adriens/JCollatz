@@ -61,3 +61,15 @@ Enjoy the following output files :
 - `NODES.csv`
 - `RELATIONS.csv`
 - `Threr_plus_one.graphml`
+- The `dot` file
+
+## Playing with `graphviz`
+
+See [official documentation](https://graphviz.org/doc/info/command.html) for more examples.
+
+Still here is the dumbest graphviz command you can play with :
+
+
+```
+dot -Tpdf collatz_-666_666.graphml.gv -o demo.pdf
+```
