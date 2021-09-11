@@ -65,7 +65,8 @@ Enjoy the following output files :
 
 ## Playing with `graphviz`
 
-See [official documentation](https://graphviz.org/doc/info/command.html) for more examples.
+See [official documentation](https://graphviz.org/doc/info/command.html) for more examples
+and play with [layouts](https://graphviz.org/docs/layouts/).
 
 Still here is the dumbest graphviz command you can play with :
 
