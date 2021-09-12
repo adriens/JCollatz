@@ -28,12 +28,8 @@ class collatz implements Callable<Integer> {
 
         if (Math.abs(i) % 2 == 1) {
             out = 3 * i + 1;
-            //System.out.println("Nombre impair détecté");
-            //System.out.println("OUT : " + out);
         } else {
             out = i / 2;
-            //System.out.println("Nombre pair détecté");
-            //System.out.println("OUT : " + out);
         }
         return out;
     }
